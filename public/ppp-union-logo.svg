@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0072bc" />
+      <stop offset="100%" stop-color="#005a96" />
+    </linearGradient>
+  </defs>
+
+  <!-- Laurel Wreath Left Side -->
+  <g fill="#0072bc" stroke="#0072bc" stroke-width="0.5">
+    <!-- Curved main stem -->
+    <path d="M 120 250 C 60 235 30 180 34 110 C 36 85 45 60 62 45" fill="none" stroke-width="3" stroke-linecap="round" />
+    
+    <!-- Left Leaves -->
+    <!-- Pair 1 bottom -->
+    <path d="M 112 245 C 95 248 85 240 82 232 C 90 230 102 235 112 245 Z" />
+    <path d="M 104 238 C 88 235 78 225 76 215 C 85 215 96 225 104 238 Z" />
+    
+    <!-- Pair 2 -->
+    <path d="M 85 220 C 68 215 58 205 56 195 C 66 194 77 205 85 220 Z" />
+    <path d="M 76 210 C 58 202 50 190 48 180 C 58 180 70 192 76 210 Z" />
+    
+    <!-- Pair 3 -->
+    <path d="M 62 190 C 46 182 38 170 36 158 C 47 158 58 172 62 190 Z" />
+    <path d="M 54 175 C 38 165 32 150 30 138 C 42 140 52 155 54 175 Z" />
+    
+    <!-- Pair 4 -->
+    <path d="M 46 150 C 32 138 26 122 26 110 C 37 112 46 128 46 150 Z" />
+    <path d="M 42 130 C 28 116 26 100 28 88 C 38 92 46 110 42 130 Z" />
+    
+    <!-- Pair 5 -->
+    <path d="M 40 108 C 30 92 30 76 34 64 C 44 70 48 90 40 108 Z" />
+    <path d="M 44 88 C 36 72 40 56 46 45 C 54 54 55 72 44 88 Z" />
+    
+    <!-- Pair 6 top -->
+    <path d="M 52 70 C 48 54 55 38 65 28 C 70 38 68 56 52 70 Z" />
+    <path d="M 62 50 C 62 35 72 22 84 15 C 86 26 80 42 62 50 Z" />
+    
+    <!-- Inner small accents -->
+    <path d="M 75 195 C 65 185 62 172 64 165 C 72 170 78 182 75 195 Z" />
+    <path d="M 62 160 C 52 150 50 138 54 130 C 60 136 66 148 62 160 Z" />
+    <path d="M 56 125 C 48 115 48 102 54 95 C 60 102 64 115 56 125 Z" />
+  </g>
+
+  <!-- Laurel Wreath Right Side (Mirrored) -->
+  <g fill="#0072bc" stroke="#0072bc" stroke-width="0.5" transform="translate(300, 0) scale(-1, 1)">
+    <!-- Curved main stem -->
+    <path d="M 120 250 C 60 235 30 180 34 110 C 36 85 45 60 62 45" fill="none" stroke-width="3" stroke-linecap="round" />
+    
+    <!-- Right Leaves -->
+    <path d="M 112 245 C 95 248 85 240 82 232 C 90 230 102 235 112 245 Z" />
+    <path d="M 104 238 C 88 235 78 225 76 215 C 85 215 96 225 104 238 Z" />
+    
+    <path d="M 85 220 C 68 215 58 205 56 195 C 66 194 77 205 85 220 Z" />
+    <path d="M 76 210 C 58 202 50 190 48 180 C 58 180 70 192 76 210 Z" />
+    
+    <path d="M 62 190 C 46 182 38 170 36 158 C 47 158 58 172 62 190 Z" />
+    <path d="M 54 175 C 38 165 32 150 30 138 C 42 140 52 155 54 175 Z" />
+    
+    <path d="M 46 150 C 32 138 26 122 26 110 C 37 112 46 128 46 150 Z" />
+    <path d="M 42 130 C 28 116 26 100 28 88 C 38 92 46 110 42 130 Z" />
+    
+    <path d="M 40 108 C 30 92 30 76 34 64 C 44 70 48 90 40 108 Z" />
+    <path d="M 44 88 C 36 72 40 56 46 45 C 54 54 55 72 44 88 Z" />
+    
+    <path d="M 52 70 C 48 54 55 38 65 28 C 70 38 68 56 52 70 Z" />
+    <path d="M 62 50 C 62 35 72 22 84 15 C 86 26 80 42 62 50 Z" />
+    
+    <path d="M 75 195 C 65 185 62 172 64 165 C 72 170 78 182 75 195 Z" />
+    <path d="M 62 160 C 52 150 50 138 54 130 C 60 136 66 148 62 160 Z" />
+    <path d="M 56 125 C 48 115 48 102 54 95 C 60 102 64 115 56 125 Z" />
+  </g>
+
+  <!-- 8 Arched 5-Pointed Stars along the top crown -->
+  <!-- Calculated along arc R=126, cx=150, cy=145 -->
+  <!-- Star 1: -52.5 deg -->
+  <g transform="translate(150, 145) rotate(-52.5) translate(0, -126) rotate(52.5)">
+    <polygon points="0,-7 2.1,-2.2 7,-2.2 3.1,1.1 4.5,6.2 0,3.3 -4.5,6.2 -3.1,1.1 -7,-2.2 -2.1,-2.2" fill="#0072bc" />
+  </g>
+  <!-- Star 2: -37.5 deg -->
+  <g transform="translate(150, 145) rotate(-37.5) translate(0, -126) rotate(37.5)">
+    <polygon points="0,-7 2.1,-2.2 7,-2.2 3.1,1.1 4.5,6.2 0,3.3 -4.5,6.2 -3.1,1.1 -7,-2.2 -2.1,-2.2" fill="#0072bc" />
+  </g>
+  <!-- Star 3: -22.5 deg -->
+  <g transform="translate(150, 145) rotate(-22.5) translate(0, -126) rotate(22.5)">
+    <polygon points="0,-7 2.1,-2.2 7,-2.2 3.1,1.1 4.5,6.2 0,3.3 -4.5,6.2 -3.1,1.1 -7,-2.2 -2.1,-2.2" fill="#0072bc" />
+  </g>
+  <!-- Star 4: -7.5 deg -->
+  <g transform="translate(150, 145) rotate(-7.5) translate(0, -126) rotate(7.5)">
+    <polygon points="0,-7 2.1,-2.2 7,-2.2 3.1,1.1 4.5,6.2 0,3.3 -4.5,6.2 -3.1,1.1 -7,-2.2 -2.1,-2.2" fill="#0072bc" />
+  </g>
+  <!-- Star 5: +7.5 deg -->
+  <g transform="translate(150, 145) rotate(7.5) translate(0, -126) rotate(-7.5)">
+    <polygon points="0,-7 2.1,-2.2 7,-2.2 3.1,1.1 4.5,6.2 0,3.3 -4.5,6.2 -3.1,1.1 -7,-2.2 -2.1,-2.2" fill="#0072bc" />
+  </g>
+  <!-- Star 6: +22.5 deg -->
+  <g transform="translate(150, 145) rotate(22.5) translate(0, -126) rotate(-22.5)">
+    <polygon points="0,-7 2.1,-2.2 7,-2.2 3.1,1.1 4.5,6.2 0,3.3 -4.5,6.2 -3.1,1.1 -7,-2.2 -2.1,-2.2" fill="#0072bc" />
+  </g>
+  <!-- Star 7: +37.5 deg -->
+  <g transform="translate(150, 145) rotate(37.5) translate(0, -126) rotate(-37.5)">
+    <polygon points="0,-7 2.1,-2.2 7,-2.2 3.1,1.1 4.5,6.2 0,3.3 -4.5,6.2 -3.1,1.1 -7,-2.2 -2.1,-2.2" fill="#0072bc" />
+  </g>
+  <!-- Star 8: +52.5 deg -->
+  <g transform="translate(150, 145) rotate(52.5) translate(0, -126) rotate(-52.5)">
+    <polygon points="0,-7 2.1,-2.2 7,-2.2 3.1,1.1 4.5,6.2 0,3.3 -4.5,6.2 -3.1,1.1 -7,-2.2 -2.1,-2.2" fill="#0072bc" />
+  </g>
+
+  <!-- Double Circular Borders of the Globe -->
+  <!-- Outer circle -->
+  <circle cx="150" cy="142" r="100" fill="none" stroke="#0072bc" stroke-width="4" />
+  <!-- Inner circle -->
+  <circle cx="150" cy="142" r="92" fill="none" stroke="#0072bc" stroke-width="2.5" />
+
+  <!-- Upper Globe Longitude & Latitude Lines (100% transparent without any masks) -->
+  <g stroke="#0072bc" stroke-width="2.2" fill="none">
+    <line x1="150" y1="50" x2="150" y2="103" />
+    <path d="M 150 50 C 118 68 110 86 110 103" />
+    <path d="M 150 50 C 95 68 76 86 76 103" />
+    <path d="M 150 50 C 182 68 190 86 190 103" />
+    <path d="M 150 50 C 205 68 224 86 224 103" />
+    <path d="M 68 102 C 110 114 190 114 232 102" />
+
+    <!-- Lower Globe Longitude & Latitude Lines (100% transparent without any masks) -->
+    <line x1="150" y1="182" x2="150" y2="234" />
+    <path d="M 110 182 C 110 200 118 218 150 234" />
+    <path d="M 76 182 C 76 200 95 218 150 234" />
+    <path d="M 190 182 C 190 200 182 218 150 234" />
+    <path d="M 224 182 C 224 200 205 218 150 234" />
+    <path d="M 68 184 C 110 172 190 172 232 184" />
+  </g>
+
+  <!-- Top Tapered Accent Line above "PPP" -->
+  <polygon points="90,107 150,105 210,107 150,109" fill="#0072bc" />
+
+  <!-- Center Text: "PPP UNION" in Classical Bold Serif Font -->
+  <text 
+    x="150" 
+    y="140" 
+    text-anchor="middle" 
+    font-family="Georgia, 'Times New Roman', 'Playfair Display', serif" 
+    font-size="34" 
+    font-weight="900" 
+    letter-spacing="1" 
+    fill="#0072bc"
+  >
+    PPP
+  </text>
+  <text 
+    x="150" 
+    y="173" 
+    text-anchor="middle" 
+    font-family="Georgia, 'Times New Roman', 'Playfair Display', serif" 
+    font-size="32" 
+    font-weight="900" 
+    letter-spacing="1.5" 
+    fill="#0072bc"
+  >
+    UNION
+  </text>
+
+  <!-- Bottom Tapered Accent Line below "UNION" -->
+  <polygon points="90,179 150,177 210,179 150,181" fill="#0072bc" />
+
+  <!-- Bottom Decorative Banner / Ribbon for "17-SDGs" - 100% Transparent Outline -->
+  <g>
+    <!-- Left Ribbon Fold & Tail -->
+    <polygon points="90,240 65,244 80,256 62,268 95,264 95,248" fill="none" stroke="#0072bc" stroke-width="1.2" />
+    <polygon points="90,248 105,250 105,266 90,258" fill="none" stroke="#0072bc" stroke-width="1.2" />
+
+    <!-- Right Ribbon Fold & Tail -->
+    <polygon points="210,240 235,244 220,256 238,268 205,264 205,248" fill="none" stroke="#0072bc" stroke-width="1.2" />
+    <polygon points="210,248 195,250 195,266 210,258" fill="none" stroke="#0072bc" stroke-width="1.2" />
+
+    <!-- Main Front Arched Ribbon - Transparent -->
+    <path 
+      d="M 92 242 Q 150 248 208 242 L 208 268 Q 150 274 92 268 Z" 
+      fill="none" 
+      stroke="#0072bc" 
+      stroke-width="1.8" 
+    />
+
+    <!-- Ribbon Text: "17-SDGs" in Bold Serif Font -->
+    <text 
+      x="150" 
+      y="262" 
+      text-anchor="middle" 
+      font-family="Georgia, 'Times New Roman', serif" 
+      font-size="20" 
+      font-weight="bold" 
+      letter-spacing="0.5" 
+      fill="#0072bc"
+    >
+      17-SDGs
+    </text>
+  </g>
+</svg>

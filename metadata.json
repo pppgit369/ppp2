@@ -1,0 +1,6 @@
+{
+  "name": "PPP Union - Sustainable Development Goals",
+  "description": "The Public Private Partnership Union (PPP Union) is an international administrative and organizing entity established in 2012 to promote global Public-Private Partnership (PPP) knowledge and UN 17 Sustainable Development Goals.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
