@@ -7,6 +7,7 @@ export interface SubmenuChapter {
   tagline: string;
   summary: string;
   contentParagraphs: string[];
+  paragraphs?: string[];
   keyPillars?: { title: string; description: string; tag?: string }[];
   statutes?: { authority: string; code: string; scope: string }[];
   faqs?: { question: string; answer: string }[];

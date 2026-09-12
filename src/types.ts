@@ -96,6 +96,9 @@ export interface PortalCredentials {
 }
 
 export interface HomeLegalCharter {
+  title?: string;
+  subtitle?: string;
+  badge?: string;
   activityCodes: string;
   iloLegalBasis: string;
   euLegalBasis: string;
@@ -103,6 +106,8 @@ export interface HomeLegalCharter {
   paragraph1: string;
   paragraph2: string;
   paragraph3: string;
-  paragraph4: string;
-  disclaimer: string;
+  paragraph4?: string;
+  disclaimer?: string;
+  iloConvention?: string;
+  euCharter?: string;
 }

@@ -283,7 +283,7 @@ function MainAppContent() {
   // WordPress Post & Page Editor Modal State
   const [isWpManagerOpen, setIsWpManagerOpen] = useState<boolean>(false);
   const [wpInitialEditingId, setWpInitialEditingId] = useState<string | null>(null);
-  const [wpInitialMode, setWpInitialMode] = useState<'list' | 'editor' | 'paste-studio' | 'launch'>('paste-studio');
+  const [wpInitialMode, setWpInitialMode] = useState<'list' | 'editor' | 'paste-studio' | 'launch' | 'quick-posts'>('paste-studio');
 
   // Master Logo Modal State
   const [isLogoModalOpen, setIsLogoModalOpen] = useState<boolean>(false);
@@ -442,7 +442,7 @@ function MainAppContent() {
 
   const handleOpenWpEditor = (
     chapterId?: string | null, 
-    mode: 'list' | 'editor' | 'paste-studio' | 'launch' = 'paste-studio'
+    mode: 'list' | 'editor' | 'paste-studio' | 'launch' | 'quick-posts' = 'paste-studio'
   ) => {
     // If chapterId is not explicitly provided, and the user is on a specific sub-menu or page, use that current page's clean ID
     const effectiveId = chapterId || (activePage && activePage !== '#home' && activePage !== '#' ? activePage.replace(/^#/, '') : null);

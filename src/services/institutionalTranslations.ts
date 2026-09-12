@@ -35,7 +35,11 @@ export const INSTITUTIONAL_CHARTER_TRANSLATIONS: Record<LanguageCode, HomeLegalC
     paragraph2:
       'These legal instruments formally recognize and authorize the establishment and operation of professional unions, empowering them to organize, skill, mobilize, and support both the private and public sectors for the lawful and transparent achievement of their approved objectives.',
     paragraph3:
-      'The Union further aligns its service framework with the United Nations 2030 Agenda, specifically the UN International 17 SDGs Services Support Order, Resolution A/RES/70/1 (2015), which endorses cooperative, cross sectoral, and multinational facilitation mechanisms for advancing sustainable development. In this context, the Union’s mandate is to organize and unite legal firms and professional entities, enabling them to share facilities, expertise, and institutional capacities to support and accelerate the achievement of the UN Sustainable Development Goals worldwide.',
+      'The Union further aligns its service framework with the United Nations 2030 Agenda, specifically the UN International 17 SDGs Services Support Order, Resolution A/RES/70/1 (2015), which endorses cooperative, cross sectoral, and multinational facilitation mechanisms for advancing sustainable development.',
+    paragraph4:
+      'In this context, the Union’s mandate is to organize and unite legal firms and professional entities, enabling them to share facilities, expertise, and institutional capacities to support and accelerate the achievement of the UN Sustainable Development Goals worldwide.',
+    disclaimer:
+      'PPP Union is not a contracting party, not a financier, and not a project participant. It functions strictly as an enabler, principal facilitator, organizer, and regulatory support union for multinational firms and PPP practitioners, ensuring lawful coordination, compliance, and professional collaboration across borders.',
     activityCodes: 'Ethics (SIC N 10:20), NACE 94.99 & 7020003',
     iloLegalBasis: 'ILO Convention No. 87 (1948 – UN Law)',
     euLegalBasis: 'Article 12, EU Charter of Fundamental Rights (2000 Edition)',
@@ -50,7 +54,11 @@ export const INSTITUTIONAL_CHARTER_TRANSLATIONS: Record<LanguageCode, HomeLegalC
     paragraph2:
       'این اسناد حقوقی رسماً تأسیس و فعالیت اتحادیه‌های تخصصی را به رسمیت شناخته و مجاز می‌دانند و آن‌ها را توانمند می‌سازند تا هر دو بخش خصوصی و دولتی را برای دستیابی قانونی و شفاف به اهداف مصوب خود سازماندهی، مهارت‌افزایی، بسیج و پشتیبانی نمایند.',
     paragraph3:
-      'اتحادیه همچنین چارچوب خدماتی خود را با دستور کار ۲۰۳۰ سازمان ملل متحد، به‌ویژه دستور پشتیبانی خدمات ۱۷ هدف توسعه پایدار بین‌المللی سازمان ملل، قطعنامه A/RES/70/1 (۲۰۱۵) همسو می‌سازد؛ قطعنامه‌ای که سازوکارهای تسهیل‌کننده تعاونی، فرابخشی و چندملیتی را برای پیشبرد توسعه پایدار تأیید می‌کند. در این زمینه، مأموریت اتحادیه سازماندهی و اتحاد شرکت‌های حقوقی و نهادهای تخصصی است تا آن‌ها را قادر سازد امکانات، تخصص و ظرفیت‌های نهادی خود را برای حمایت و تسریع در دستیابی به اهداف توسعه پایدار سازمان ملل در سراسر جهان به اشتراک بگذارند.',
+      'اتحادیه همچنین چارچوب خدماتی خود را با دستور کار ۲۰۳۰ سازمان ملل متحد، به‌ویژه دستور پشتیبانی خدمات ۱۷ هدف توسعه پایدار بین‌المللی سازمان ملل، قطعنامه A/RES/70/1 (۲۰۱۵) همسو می‌سازد؛ قطعنامه‌ای که سازوکارهای تسهیل‌کننده تعاونی، فرابخشی و چندملیتی را برای پیشبرد توسعه پایدار تأیید می‌کند.',
+    paragraph4:
+      'در این زمینه، مأموریت اتحادیه سازماندهی و اتحاد شرکت‌های حقوقی و نهادهای تخصصی است تا آن‌ها را قادر سازد امکانات، تخصص و ظرفیت‌های نهادی خود را برای حمایت و تسریع در دستیابی به اهداف توسعه پایدار سازمان ملل در سراسر جهان به اشتراک بگذارند.',
+    disclaimer:
+      'اتحادیه مشارکت عمومی-خصوصی (PPP Union) طرف قرارداد، تأمین‌کننده مالی یا مجری پروژه‌ها نبوده و صرفاً به عنوان تسهیل‌کننده و هماهنگ‌کننده نهادی عمل می‌نماید.',
     activityCodes: 'اخلاق (SIC N 10:20)، NACE 94.99 و 7020003',
     iloLegalBasis: 'مقاوله‌نامه شماره ۸۷ سازمان بین‌المللی کار (۱۹۴۸ – قوانین سازمان ملل)',
     euLegalBasis: 'ماده ۱۲، منشور حقوق بنیادین اتحادیه اروپا (ویرایش ۲۰۰۰)',
@@ -65,7 +73,11 @@ export const INSTITUTIONAL_CHARTER_TRANSLATIONS: Record<LanguageCode, HomeLegalC
     paragraph2:
       'تعترف هذه الصكوك القانونية رسمياً بإنشاء وتشغيل الاتحادات المهنية وتخولها لتنظيم وتدريب وتعبئة ودعم كل من القطاعين الخاص والعام لتحقيق أهدافها المعتمدة بشكل قانوني وشفاف.',
     paragraph3:
-      'علاوة على ذلك، يوفق الاتحاد إطار خدماته مع خطة الأمم المتحدة لعام 2030، وتحديداً أمر دعم خدمات أهداف التنمية المستدامة الـ 17 الدولية للأمم المتحدة، القرار A/RES/70/1 (2015)، الذي يؤيد آليات التيسير التعاونية والقطاعية المتعددة الجنسيات لدفع التنمية المستدامة. وفي هذا السياق، يتمثل تفويض الاتحاد في تنظيم وتوحيد الشركات القانونية والكيانات المهنية لتمكينها من تبادل المرافق والخبرات والقدرات المؤسسية لدعم وتسريع تحقيق أهداف التنمية المستدامة للأمم المتحدة في جميع أنحاء العالم.',
+      'علاوة على ذلك، يوفق الاتحاد إطار خدماته مع خطة الأمم المتحدة لعام 2030، وتحديداً أمر دعم خدمات أهداف التنمية المستدامة الـ 17 الدولية للأمم المتحدة، القرار A/RES/70/1 (2015)، الذي يؤيد آليات التيسير التعاونية والقطاعية المتعددة الجنسيات لدفع التنمية المستدامة.',
+    paragraph4:
+      'وفي هذا السياق، يتمثل تفويض الاتحاد في تنظيم وتوحيد الشركات القانونية والكيانات المهنية لتمكينها من تبادل المرافق والخبرات والقدرات المؤسسية لدعم وتسريع تحقيق أهداف التنمية المستدامة للأمم المتحدة في جميع أنحاء العالم.',
+    disclaimer:
+      'اتحاد الشراكة بين القطاعين العام والخاص (PPP Union) ليس طرفاً متعاقداً ولا ممولاً للمشاريع، بل يعمل كجهة تيسير وتنظيم مؤسسي دولي.',
     activityCodes: 'رموز الأخلاقيات (SIC N 10:20)، NACE 94.99 و7020003',
     iloLegalBasis: 'اتفاقية منظمة العمل الدولية رقم 87 (1948 - قانون الأمم المتحدة)',
     euLegalBasis: 'المادة 12، ميثاق الحقوق الأساسية للاتحاد الأوروبي (إصدار 2000)',
@@ -80,7 +92,11 @@ export const INSTITUTIONAL_CHARTER_TRANSLATIONS: Record<LanguageCode, HomeLegalC
     paragraph2:
       'Bu hukuki belgeler, meslek birliklerinin kurulmasını ve işletilmesini resmi olarak tanır ve yetkilendirir; onaylanmış hedeflerine yasal ve şeffaf bir şekilde ulaşmaları için hem özel hem de kamu sektörlerini organize etme, beceri kazandırma, harekete geçirme ve destekleme yetkisi verir.',
     paragraph3:
-      'Birlik ayrıca hizmet çerçevesini Birleşmiş Milletler 2030 Gündemiyle, özellikle sürdürülebilir kalkınmayı ilerletmek için işbirlikçi, sektörler arası ve çok uluslu kolaylaştırma mekanizmalarını onaylayan BM Uluslararası 17 SDG Hizmet Destek Emri, A/RES/70/1 (2015) sayılı Kararla uyumlu hale getirmektedir. Bu kapsamda Birliğin görevi, hukuk firmalarını ve profesyonel kuruluşları organize etmek ve birleştirmektir.',
+      'Birlik ayrıca hizmet çerçevesini Birleşmiş Milletler 2030 Gündemiyle, özellikle sürdürülebilir kalkınmayı ilerletmek için işbirlikçi, sektörler arası ve çok uluslu kolaylaştırma mekanizmalarını onaylayan BM Uluslararası 17 SDG Hizmet Destek Emri, A/RES/70/1 (2015) sayılı Kararla uyumlu hale getirmektedir.',
+    paragraph4:
+      'Bu kapsamda Birliğin görevi, hukuk firmalarını ve profesyonel kuruluşları organize etmek ve birleştirmektir; olanakları, uzmanlığı ve kurumsal kapasiteleri paylaşmalarını sağlayarak dünya çapında BM Sürdürülebilir Kalkınma Amaçlarına ulaşılmasını hızlandırmaktır.',
+    disclaimer:
+      'PPP Union sözleşme tarafı veya finansör değildir; çok uluslu kurumlar için kolaylaştırıcı ve düzenleyici birlik olarak hizmet verir.',
     activityCodes: 'Etik (SIC N 10:20), NACE 94.99 ve 7020003',
     iloLegalBasis: 'ILO 87 Sayılı Sözleşme (1948 – BM Hukuku)',
     euLegalBasis: 'Madde 12, AB Temel Haklar Şartı (2000 Baskısı)',
@@ -96,6 +112,10 @@ export const INSTITUTIONAL_CHARTER_TRANSLATIONS: Record<LanguageCode, HomeLegalC
       'Ces instruments juridiques reconnaissent et autorisent formellement la création et le fonctionnement d\'unions professionnelles, leur conférant le pouvoir d\'organiser, former, mobiliser et soutenir les secteurs public et privé pour la réalisation transparente de leurs objectifs approuvés.',
     paragraph3:
       'L\'Union aligne en outre son cadre de services sur l\'Agenda 2030 des Nations Unies, spécifiquement l\'Ordre de soutien aux 17 ODD, Résolution A/RES/70/1 (2015), qui soutient les mécanismes coopératifs et multinationaux d\'accélération du développement durable.',
+    paragraph4:
+      'Dans ce contexte, le mandat de l\'Union est d\'organiser et d\'unir les cabinets juridiques et les entités professionnelles, leur permettant de partager installations, expertise et capacités institutionnelles pour accélérer la réalisation des Objectifs de Développement Durable.',
+    disclaimer:
+      'L\'Union PPP n\'est ni partie contractante ni bailleur de fonds ; elle agit en tant qu\'union de facilitation et d\'appui réglementaire.',
     activityCodes: 'Éthique (SIC N 10:20), NACE 94.99 & 7020003',
     iloLegalBasis: 'Convention OIT n° 87 (1948 – Droit de l\'ONU)',
     euLegalBasis: 'Article 12, Charte des droits fondamentaux de l\'UE (2000)',
@@ -111,6 +131,10 @@ export const INSTITUTIONAL_CHARTER_TRANSLATIONS: Record<LanguageCode, HomeLegalC
       'Эти правовые акты официально признают и разрешают создание и деятельность профессиональных союзов, наделяя их полномочиями организовывать, обучать, мобилизовать и поддерживать как частный, так и государственный секторы для законного и прозрачного достижения одобренных целей.',
     paragraph3:
       'Союз также согласует структуру своих услуг с Повесткой дня ООН в области устойчивого развития на период до 2030 года, в частности с Приказом о поддержке услуг по 17 ЦУР, Резолюция A/RES/70/1 (2015 г.), который одобряет совместные многонациональные механизмы содействия устойчивому развитию.',
+    paragraph4:
+      'В этом контексте мандат Союза заключается в организации и объединении юридических фирм и профессиональных структур для ускорения достижения Целей устойчивого развития ООН во всем мире.',
+    disclaimer:
+      'Союз ГЧП не является стороной договора или финансистом, выступая в качестве организационного и регуляторного союза.',
     activityCodes: 'Этика (SIC N 10:20), NACE 94.99 и 7020003',
     iloLegalBasis: 'Конвенция МОТ № 87 (1948 г. – Право ООН)',
     euLegalBasis: 'Статья 12, Хартия основных прав ЕС (2000 г.)',

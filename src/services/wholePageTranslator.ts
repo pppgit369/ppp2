@@ -453,3 +453,34 @@ export function triggerWholePageTranslation(targetLang: string): void {
     // Ignore iframe restrictions
   }
 }
+
+/**
+ * Initializes Google Translate script safely in the DOM if needed.
+ */
+export async function initGoogleTranslateScript(): Promise<void> {
+  if (typeof window === 'undefined') return;
+  if ((window as any).googleTranslateElementInit) return;
+
+  (window as any).googleTranslateElementInit = function() {
+    try {
+      if ((window as any).google && (window as any).google.translate) {
+        new (window as any).google.translate.TranslateElement(
+          { pageLanguage: 'en', autoDisplay: false },
+          'google_translate_element'
+        );
+      }
+    } catch (e) {
+      // Ignore
+    }
+  };
+
+  if (!document.getElementById('google-translate-script')) {
+    const script = document.createElement('script');
+    script.id = 'google-translate-script';
+    script.type = 'text/javascript';
+    script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    script.async = true;
+    document.body.appendChild(script);
+  }
+}
+

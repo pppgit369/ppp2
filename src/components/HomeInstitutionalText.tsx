@@ -59,10 +59,14 @@ export const HomeInstitutionalText: React.FC<HomeInstitutionalTextProps> = ({
   const [charter, setCharter] = React.useState<HomeLegalCharter>(() => {
     if (propHomeCharter) return propHomeCharter;
     try {
-      const saved = localStorage.getItem('ppp_union_home_legal_charter_v2');
+      // Clear older version caches that could overwrite the user's updated text
+      localStorage.removeItem('ppp_union_home_legal_charter');
+      localStorage.removeItem('ppp_union_home_legal_charter_v1');
+      localStorage.removeItem('ppp_union_home_legal_charter_v2');
+      const saved = localStorage.getItem('ppp_union_home_legal_charter_v5');
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (parsed && parsed.paragraph1) return parsed;
+        if (parsed && parsed.paragraph1 && parsed.paragraph4) return parsed;
       }
     } catch (e) {
       console.error(e);
@@ -92,7 +96,7 @@ export const HomeInstitutionalText: React.FC<HomeInstitutionalTextProps> = ({
   const handleSaveCharter = () => {
     setCharter(draftCharter);
     try {
-      localStorage.setItem('ppp_union_home_legal_charter_v2', JSON.stringify(draftCharter));
+      localStorage.setItem('ppp_union_home_legal_charter_v5', JSON.stringify(draftCharter));
     } catch (e) {
       console.error(e);
     }
