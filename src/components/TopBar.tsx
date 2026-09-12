@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Globe, User, Edit3, Check, ChevronDown, Lock, X, Maximize2, Minimize2, EyeOff, Layers, ShieldCheck, Sparkles } from 'lucide-react';
+import { Globe, User, Edit3, Check, ChevronDown, Lock, X, Maximize2, Minimize2, EyeOff, Layers, ShieldCheck, Sparkles, LogOut } from 'lucide-react';
 import { PWAInstallButton } from './PWAInstallButton';
 import { useDeviceDetect } from '../hooks/useDeviceDetect';
 import { useAdmin } from '../context/AdminContext';
@@ -34,7 +34,7 @@ export const TopBar: React.FC<TopBarProps> = ({
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [memberAccount, setMemberAccount] = useState<string | null>(null);
   const { isFullscreen, toggleFullscreen, isDesktop } = useDeviceDetect();
-  const { isAdmin, setIsAdmin } = useAdmin();
+  const { isAdmin, setIsAdmin, openAdminLoginModal } = useAdmin();
 
   useEffect(() => {
     const updateDateTime = () => {
@@ -209,26 +209,26 @@ export const TopBar: React.FC<TopBarProps> = ({
 
           {/* Admin Role Status Badge on Top Bar (Only visible when logged in as Admin) */}
           {isAdmin ? (
-            <div className="flex items-center gap-1.5 bg-[#004f80] border border-sky-400/40 px-2.5 py-0.5 rounded text-[11px] font-semibold text-white select-none">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>Admin</span>
+            <div className="flex items-center gap-2 bg-[#004f80] border border-sky-400/50 px-2.5 py-1 rounded text-[11px] font-semibold text-white select-none">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="font-bold text-sky-200">Admin Mode</span>
               <button
                 onClick={() => setIsAdmin(false)}
-                className="text-slate-300 hover:text-white underline text-[10px] ml-1 cursor-pointer font-normal"
-                title="Switch to Visitor View (Hides Admin Bar & Controls)"
+                className="flex items-center gap-1 bg-rose-600 hover:bg-rose-700 text-white px-2 py-0.5 rounded text-[10px] font-bold cursor-pointer transition-colors shadow-xs"
+                title="Sign out of Admin Mode and switch to Visitor / Client View"
               >
-                Visitor View
+                <LogOut className="w-3 h-3" />
+                <span>Log Out</span>
               </button>
             </div>
           ) : (
             <button
-              id="admin-login-quick-btn"
-              onClick={() => setIsAdmin(true)}
-              className="flex items-center gap-1.5 text-amber-300 hover:text-amber-200 bg-amber-500/10 hover:bg-amber-500/20 px-2.5 py-0.5 rounded text-[11px] font-bold border border-amber-400/30 transition-colors cursor-pointer"
-              title="Click to restore Admin Mode & Dashboard"
+              onClick={openAdminLoginModal}
+              className="flex items-center gap-1 text-slate-300 hover:text-white px-2 py-0.5 rounded text-[11px] font-medium transition-colors cursor-pointer border border-transparent hover:border-slate-700"
+              title="Portal Access"
             >
-              <Lock className="w-3 h-3 text-amber-400" />
-              <span>Admin Access</span>
+              <Lock className="w-3 h-3 text-slate-400" />
+              <span>Portal</span>
             </button>
           )}
         </div>
@@ -338,16 +338,13 @@ export const TopBar: React.FC<TopBarProps> = ({
                 <button
                   type="button"
                   onClick={() => {
-                    setIsAdmin(true);
-                    setIsLoggedIn(true);
-                    setMemberAccount('admin@pppunion.org');
                     setShowLoginModal(false);
-                    if (onNavigate) onNavigate('#members-admin');
+                    openAdminLoginModal();
                   }}
                   className="w-full py-2 px-3 bg-amber-50 hover:bg-amber-100 text-amber-900 font-bold rounded-lg text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer border border-amber-300"
                 >
                   <Lock className="w-3.5 h-3.5 text-amber-700" />
-                  <span>Admin Desk (members@pppunion.org)</span>
+                  <span>Secretariat Admin Desk (Authorized Staff)</span>
                 </button>
               </div>
 

@@ -73,16 +73,40 @@ interface MemberPortalProps {
   initialTab?: 'login' | 'portal' | 'register' | 'admin';
 }
 
-export const MemberPortal: React.FC<MemberPortalProps> = ({ onNavigate, initialTab = 'portal' }) => {
+export const MemberPortal: React.FC<MemberPortalProps> = ({ onNavigate, initialTab = 'login' }) => {
+  const [isMemberAuthenticated, setIsMemberAuthenticated] = useState<boolean>(() => {
+    try {
+      return localStorage.getItem('ppp_member_authenticated') === 'true';
+    } catch {
+      return false;
+    }
+  });
+
   // Top-level mode: 'login' (Members Login), 'portal' (Member's view), 'register' (KYC Registration), 'admin' (members@pppunion.org desk)
-  const [activeMainView, setActiveMainView] = useState<'login' | 'portal' | 'register' | 'admin'>(initialTab);
+  const [activeMainView, setActiveMainView] = useState<'login' | 'portal' | 'register' | 'admin'>(() => {
+    if (initialTab === 'portal') {
+      try {
+        const isAuth = localStorage.getItem('ppp_member_authenticated') === 'true';
+        return isAuth ? 'portal' : 'login';
+      } catch {
+        return 'login';
+      }
+    }
+    return initialTab || 'login';
+  });
 
   // Sync when initialTab prop changes
   useEffect(() => {
-    if (initialTab) {
+    if (initialTab === 'portal') {
+      if (!isMemberAuthenticated) {
+        setActiveMainView('login');
+      } else {
+        setActiveMainView('portal');
+      }
+    } else if (initialTab) {
       setActiveMainView(initialTab);
     }
-  }, [initialTab]);
+  }, [initialTab, isMemberAuthenticated]);
 
   // Login form state
   const [loginIdentifier, setLoginIdentifier] = useState('');
@@ -424,6 +448,12 @@ export const MemberPortal: React.FC<MemberPortalProps> = ({ onNavigate, initialT
     setIsAuthenticating(true);
     setTimeout(() => {
       setIsAuthenticating(false);
+      setIsMemberAuthenticated(true);
+      try {
+        localStorage.setItem('ppp_member_authenticated', 'true');
+      } catch (e) {
+        console.error(e);
+      }
       const raw = loginIdentifier.trim().toLowerCase();
       if (raw.includes('admin') || raw.includes('secretariat') || raw.includes('desk')) {
         setActiveMainView('admin');
@@ -468,6 +498,12 @@ export const MemberPortal: React.FC<MemberPortalProps> = ({ onNavigate, initialT
     setIsAuthenticating(true);
     setTimeout(() => {
       setIsAuthenticating(false);
+      setIsMemberAuthenticated(true);
+      try {
+        localStorage.setItem('ppp_member_authenticated', 'true');
+      } catch (e) {
+        console.error(e);
+      }
       if (tier === 'vip') {
         setActiveMember(MOCK_ACTIVE_VIP_MEMBER);
         setActiveMainView('portal');
@@ -499,6 +535,12 @@ export const MemberPortal: React.FC<MemberPortalProps> = ({ onNavigate, initialT
 
   // Sign out and return to Members Login
   const handleLogout = () => {
+    setIsMemberAuthenticated(false);
+    try {
+      localStorage.removeItem('ppp_member_authenticated');
+    } catch (e) {
+      console.error(e);
+    }
     setActiveMainView('login');
     setLoginSuccessMsg('You have signed out of your member portal terminal.');
     setTimeout(() => setLoginSuccessMsg(null), 4000);
@@ -546,7 +588,14 @@ export const MemberPortal: React.FC<MemberPortalProps> = ({ onNavigate, initialT
             </button>
 
             <button
-              onClick={() => setActiveMainView('portal')}
+              onClick={() => {
+                if (!isMemberAuthenticated) {
+                  setActiveMainView('login');
+                  setLoginError('Authentication Required: Please enter your assigned Member ID and password or use the 1-Click Credentials below to access your Member Terminal.');
+                } else {
+                  setActiveMainView('portal');
+                }
+              }}
               className={`px-3 sm:px-3.5 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shrink-0 ${
                 activeMainView === 'portal'
                   ? 'bg-[#0072bc] text-white shadow-xs'
@@ -554,7 +603,7 @@ export const MemberPortal: React.FC<MemberPortalProps> = ({ onNavigate, initialT
               }`}
             >
               <User className="w-3.5 h-3.5" />
-              <span>My Member Portal</span>
+              <span>{isMemberAuthenticated ? 'My Member Portal' : 'Member Terminal (Sign In)'}</span>
             </button>
 
             <button

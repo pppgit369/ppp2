@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Edit3, Image as ImageIcon } from 'lucide-react';
+import { AdminLoginModal } from '../components/AdminLoginModal';
 
 export interface FastTitleEditRequest {
   initialValue: string;
@@ -18,6 +19,9 @@ export interface AdminContextType {
   isAdmin: boolean;
   setIsAdmin: (isAdmin: boolean) => void;
   toggleAdmin: () => void;
+  openAdminLoginModal: () => void;
+  closeAdminLoginModal: () => void;
+  isAdminLoginModalOpen: boolean;
   openFastTitleEditor: (request: FastTitleEditRequest) => void;
   openFastImageReplacer: (request: FastImageReplaceRequest) => void;
   activeTitleEdit: FastTitleEditRequest | null;
@@ -35,7 +39,8 @@ export interface AdminContextType {
 
 const AdminContext = createContext<AdminContextType | undefined>(undefined);
 
-const STORAGE_KEY_IS_ADMIN = 'ppp_is_admin';
+// Key for session-based admin authentication
+const STORAGE_KEY_IS_ADMIN_SESSION = 'ppp_admin_session_active';
 const STORAGE_KEY_CUSTOM_LOGO = 'ppp_custom_logo_v2';
 
 // Helper to dynamically update browser tab favicon
@@ -54,28 +59,31 @@ const updateFavicon = (url: string) => {
 };
 
 export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Always defaults to true for the site administrator/owner so the full WordPress Dashboard, Admin Bar, and Smart Box Edit are immediately active
+  // Defaults strictly to false (signed-out visitor/client mode) for all public visitors and deployments
+  // The site is ALWAYS 100% read-only and non-editable unless the administrator explicitly signs in with the Secretariat passcode
   const [isAdmin, setIsAdminState] = useState<boolean>(() => {
-    const saved = localStorage.getItem(STORAGE_KEY_IS_ADMIN);
-    // If previously toggled to false or unset, ensure admin dashboard and access are brought back to active
-    if (saved === 'false') {
-      try {
-        localStorage.setItem(STORAGE_KEY_IS_ADMIN, 'true');
-      } catch (e) {
-        console.error(e);
-      }
-      return true;
+    try {
+      // Clean up any stale legacy localStorage admin flags so nobody is accidentally admin
+      localStorage.removeItem('ppp_is_admin');
+      const saved = sessionStorage.getItem(STORAGE_KEY_IS_ADMIN_SESSION);
+      return saved === 'true';
+    } catch {
+      return false;
     }
-    return true;
   });
 
+  const [isAdminLoginModalOpen, setIsAdminLoginModalOpen] = useState<boolean>(false);
   const [activeTitleEdit, setActiveTitleEdit] = useState<FastTitleEditRequest | null>(null);
   const [activeImageReplace, setActiveImageReplace] = useState<FastImageReplaceRequest | null>(null);
 
   // App Logo State (Unified across Header, Footer, Admin Bar, Modals)
   const [customLogo, setCustomLogoState] = useState<string | null>(() => {
-    const saved = localStorage.getItem(STORAGE_KEY_CUSTOM_LOGO);
-    return saved && saved.trim().length > 0 ? saved : null;
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY_CUSTOM_LOGO);
+      return saved && saved.trim().length > 0 ? saved : null;
+    } catch {
+      return null;
+    }
   });
   const [isLogoModalOpen, setIsLogoModalOpen] = useState<boolean>(false);
 
@@ -97,8 +105,10 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     const handleHashCheck = () => {
       const hash = window.location.hash;
       if (hash === '#admin' || hash === '#wp-admin') {
-        setIsAdmin(true);
-      } else if (hash === '#visitor') {
+        if (!isAdmin) {
+          setIsAdminLoginModalOpen(true);
+        }
+      } else if (hash === '#visitor' || hash === '#logout') {
         setIsAdmin(false);
       }
     };
@@ -110,23 +120,41 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('hashchange', handleHashCheck);
     };
-  }, []);
+  }, [isAdmin]);
 
   const setIsAdmin = (val: boolean) => {
     setIsAdminState(val);
-    localStorage.setItem(STORAGE_KEY_IS_ADMIN, String(val));
+    try {
+      if (val) {
+        sessionStorage.setItem(STORAGE_KEY_IS_ADMIN_SESSION, 'true');
+      } else {
+        sessionStorage.removeItem(STORAGE_KEY_IS_ADMIN_SESSION);
+      }
+      localStorage.removeItem('ppp_is_admin');
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const toggleAdmin = () => {
-    setIsAdminState((prev) => {
-      const next = !prev;
-      localStorage.setItem(STORAGE_KEY_IS_ADMIN, String(next));
-      return next;
-    });
+    if (isAdmin) {
+      setIsAdmin(false);
+    } else {
+      setIsAdminLoginModalOpen(true);
+    }
   };
 
-  // Double-click fast editing is enabled for all users
+  const openAdminLoginModal = () => {
+    setIsAdminLoginModalOpen(true);
+  };
+
+  const closeAdminLoginModal = () => {
+    setIsAdminLoginModalOpen(false);
+  };
+
+  // Double-click fast editing is strictly restricted to authenticated Secretariat Admins
   const openFastTitleEditor = (request: FastTitleEditRequest) => {
+    if (!isAdmin) return;
     setActiveTitleEdit(request);
   };
 
@@ -134,8 +162,9 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     setActiveTitleEdit(null);
   };
 
-  // Double-click image replacement enabled globally for all images
+  // Double-click image replacement is strictly restricted to authenticated Secretariat Admins
   const openFastImageReplacer = (request: FastImageReplaceRequest) => {
+    if (!isAdmin) return;
     setActiveImageReplace(request);
   };
 
@@ -147,11 +176,19 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const setCustomLogo = (logoUrl: string | null) => {
     if (logoUrl && logoUrl.trim().length > 0) {
       setCustomLogoState(logoUrl);
-      localStorage.setItem(STORAGE_KEY_CUSTOM_LOGO, logoUrl);
+      try {
+        localStorage.setItem(STORAGE_KEY_CUSTOM_LOGO, logoUrl);
+      } catch (e) {
+        console.error(e);
+      }
       updateFavicon(logoUrl);
     } else {
       setCustomLogoState(null);
-      localStorage.removeItem(STORAGE_KEY_CUSTOM_LOGO);
+      try {
+        localStorage.removeItem(STORAGE_KEY_CUSTOM_LOGO);
+      } catch (e) {
+        console.error(e);
+      }
       updateFavicon('/icon.svg');
     }
   };
@@ -174,6 +211,9 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         isAdmin,
         setIsAdmin,
         toggleAdmin,
+        openAdminLoginModal,
+        closeAdminLoginModal,
+        isAdminLoginModalOpen,
         openFastTitleEditor,
         openFastImageReplacer,
         activeTitleEdit,
@@ -189,6 +229,10 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       }}
     >
       {children}
+      <AdminLoginModal
+        isOpen={isAdminLoginModalOpen}
+        onClose={closeAdminLoginModal}
+      />
     </AdminContext.Provider>
   );
 };

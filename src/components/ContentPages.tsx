@@ -272,13 +272,22 @@ export const ContentPages: React.FC<ContentPagesProps> = ({
     cleanId === 'members' ||
     cleanId === 'members-admin'
   ) {
-    const initialTab = (cleanId === 'members-login' || cleanId === 'member-login' || cleanId === 'members-login-2' || cleanId === 'login')
+    const initialTab = (
+      cleanId === 'members-login' || 
+      cleanId === 'member-login' || 
+      cleanId === 'members-login-2' || 
+      cleanId === 'login' || 
+      cleanId === 'members' ||
+      cleanId === 'accreditation'
+    )
       ? 'login'
       : cleanId === 'member-registration' 
       ? 'register' 
       : cleanId === 'members-admin' 
       ? 'admin' 
-      : 'portal';
+      : cleanId === 'member-portal' || cleanId === 'membership-portal' || cleanId === 'delegate-portal' || cleanId === 'my-account'
+      ? 'portal'
+      : 'login';
     return <MemberPortal onNavigate={onNavigate} initialTab={initialTab} />;
   }
 

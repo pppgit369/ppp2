@@ -45,6 +45,22 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
+## Authentication & Access Control
+
+1. **Default Mode (Signed-out Visitor View)**:
+   - When deployed to Firebase or accessed by public visitors, the site opens strictly in non-editable client mode (`isAdmin = false`).
+   - Content editing tools, inline editors, and the administrative dashboard are hidden and disabled.
+
+2. **Secretariat Administrator Authentication**:
+   - Authorized staff can unlock administrative controls by clicking **Secretariat Admin** in the footer or entering `#admin` in the URL.
+   - Requires entering the Secretariat security passcode (`secretariat2026` or `ppp2026`).
+
+3. **Member Portal Access**:
+   - Visitors access the **Members Login** terminal to authenticate as a registered delegate or consultant.
+   - Evaluators can test both the authenticated member terminal (via Member ID/password or 1-Click test credentials) and the signed-out state using the **Sign Out** button.
+
+---
+
 ## Deploying to Firebase Hosting
 
 Firebase Hosting serves compiled static assets, **not** the raw TypeScript code. The pre-configured `firebase.json` serves from the `dist/` directory.

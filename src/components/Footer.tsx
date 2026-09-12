@@ -1,6 +1,6 @@
 import React from 'react';
 import { HeaderLogo } from './HeaderLogo';
-import { ExternalLink, Shield, Globe2, FileText, Mail, Lock, MessageSquare, Sparkles } from 'lucide-react';
+import { ExternalLink, Shield, Globe2, FileText, Mail, Lock, MessageSquare, Sparkles, LogOut } from 'lucide-react';
 import { MenuItem } from '../types';
 import { useAdmin } from '../context/AdminContext';
 
@@ -11,7 +11,7 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ navigation, onNavigate, onOpenMessenger }) => {
-  const { isAdmin, setIsAdmin } = useAdmin();
+  const { isAdmin, setIsAdmin, openAdminLoginModal } = useAdmin();
   return (
     <footer id="main-site-footer" className="bg-[#0f2438] text-slate-300 pt-16 pb-12 border-t-4 border-[#0072bc]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
@@ -165,20 +165,20 @@ export const Footer: React.FC<FooterProps> = ({ navigation, onNavigate, onOpenMe
             {isAdmin ? (
               <button 
                 onClick={() => setIsAdmin(false)} 
-                className="hover:text-amber-400 text-slate-400 cursor-pointer flex items-center gap-1 transition-colors"
-                title="Admin active. Click to switch to visitor view"
+                className="hover:text-rose-300 text-rose-400 font-semibold cursor-pointer flex items-center gap-1 transition-colors bg-rose-950/40 px-2 py-0.5 rounded border border-rose-800/50"
+                title="Admin active. Click to Log Out and switch to visitor view"
               >
-                <Lock className="w-3 h-3 text-emerald-400" />
-                <span>Admin View (Switch to Visitor)</span>
+                <LogOut className="w-3 h-3 text-rose-400" />
+                <span>Log Out (Exit Admin Mode)</span>
               </button>
             ) : (
               <button 
-                onClick={() => setIsAdmin(true)} 
-                className="hover:text-slate-300 text-slate-600 cursor-pointer flex items-center gap-1 transition-colors"
-                title="Administrative Access (Alt+A)"
+                onClick={openAdminLoginModal} 
+                className="hover:text-slate-300 text-slate-500 cursor-pointer flex items-center gap-1 transition-colors"
+                title="Portal Access"
               >
-                <Lock className="w-3 h-3 text-slate-600" />
-                <span>Admin Login</span>
+                <Lock className="w-3 h-3 text-slate-500" />
+                <span>Portal</span>
               </button>
             )}
           </div>

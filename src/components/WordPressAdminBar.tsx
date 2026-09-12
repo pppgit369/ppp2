@@ -16,7 +16,9 @@ import {
   MousePointerClick,
   UserCheck,
   UserX,
-  EyeOff
+  EyeOff,
+  LogOut,
+  KeyRound
 } from 'lucide-react';
 import { HeaderLogo } from './HeaderLogo';
 import { useAdmin } from '../context/AdminContext';
@@ -37,7 +39,7 @@ export const WordPressAdminBar: React.FC<WordPressAdminBarProps> = ({
   onToggleEditMode,
   isEditMode,
 }) => {
-  const { isAdmin, setIsAdmin } = useAdmin();
+  const { isAdmin, setIsAdmin, openAdminLoginModal } = useAdmin();
   const [isNewMenuOpen, setIsNewMenuOpen] = useState(false);
 
   // CRITICAL REQUIREMENT: This bar must be NON-VISIBLE for public visitors, strictly for admin only!
@@ -180,21 +182,30 @@ export const WordPressAdminBar: React.FC<WordPressAdminBarProps> = ({
         {/* Active Admin Role Indicator */}
         <div 
           className="flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-[#0073aa] text-white text-[11px] font-bold shadow-xs select-none"
-          title="Authenticated as Administrator"
+          title="Authenticated as Secretariat Administrator"
         >
           <UserCheck className="w-3.5 h-3.5 text-emerald-300" />
           <span>Role: Admin</span>
         </div>
 
-        {/* Exit to Visitor View Button */}
+        {/* Change Password / Security Options */}
+        <button
+          onClick={openAdminLoginModal}
+          className="flex items-center gap-1 px-2.5 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 text-[11px] font-semibold transition-colors cursor-pointer"
+          title="Change daily admin password"
+        >
+          <KeyRound className="w-3 h-3 text-sky-400" />
+          <span className="hidden sm:inline">Change Password</span>
+        </button>
+
+        {/* Prominent Log Out (Exit Admin Mode) Button */}
         <button
           onClick={() => setIsAdmin(false)}
-          className="flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 text-[11px] font-semibold transition-colors cursor-pointer"
-          title="Switch to Visitor View (This admin bar will be hidden for visitors)"
+          className="flex items-center gap-1.5 px-3 py-1 rounded bg-rose-600 hover:bg-rose-700 text-white font-bold text-[11px] transition-colors cursor-pointer shadow-xs border border-rose-500"
+          title="Click to Log Out of Admin Mode immediately and switch to public Visitor/Client view"
         >
-          <EyeOff className="w-3 h-3 text-amber-400" />
-          <span className="hidden sm:inline">Visitor View (Hide Bar)</span>
-          <span className="sm:hidden">Hide Bar</span>
+          <LogOut className="w-3.5 h-3.5" />
+          <span>Log Out</span>
         </button>
 
         <button
