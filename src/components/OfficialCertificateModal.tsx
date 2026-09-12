@@ -43,7 +43,7 @@ export const OfficialCertificateModal: React.FC<OfficialCertificateModalProps> =
     setIsEditing(false);
   };
 
-  const certificateLogoSrc = customLogo || '/ppp-union-logo.svg';
+  const certificateLogoSrc = customLogo || '/logo.png';
 
   return (
     <div 
@@ -240,6 +240,9 @@ export const OfficialCertificateModal: React.FC<OfficialCertificateModalProps> =
                     <img 
                       src={certificateLogoSrc} 
                       alt="PPP Union Original Logo" 
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/icon.svg';
+                      }}
                       className="w-12 h-12 object-contain my-auto"
                     />
                     {/* Official Certificate label micro-text */}

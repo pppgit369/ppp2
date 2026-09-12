@@ -52,8 +52,11 @@ export const HeaderLogo: React.FC<HeaderLogoProps> = ({
           style={{ width: sealSize, height: sealSize }}
         >
           <img 
-            src={customLogo || '/icon.svg'} 
+            src={customLogo || '/logo.png'} 
             alt="PPP UNION Official App Identity Logo" 
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = '/icon.svg';
+            }}
             className={`w-full h-full object-contain bg-transparent transition-all duration-200 ${
               isDark && !customLogo ? 'brightness-0 invert opacity-95' : ''
             }`}

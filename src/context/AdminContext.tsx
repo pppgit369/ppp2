@@ -36,7 +36,7 @@ export interface AdminContextType {
 const AdminContext = createContext<AdminContextType | undefined>(undefined);
 
 const STORAGE_KEY_IS_ADMIN = 'ppp_is_admin';
-const STORAGE_KEY_CUSTOM_LOGO = 'ppp_custom_logo';
+const STORAGE_KEY_CUSTOM_LOGO = 'ppp_custom_logo_v2';
 
 // Helper to dynamically update browser tab favicon
 const updateFavicon = (url: string) => {
@@ -152,7 +152,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     } else {
       setCustomLogoState(null);
       localStorage.removeItem(STORAGE_KEY_CUSTOM_LOGO);
-      updateFavicon('/ppp-union-logo.svg');
+      updateFavicon('/icon.svg');
     }
   };
 

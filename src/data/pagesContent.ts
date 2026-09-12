@@ -1472,7 +1472,7 @@ export const SUBMENU_PAGES_CONTENT: Record<string, SubmenuChapter> = {
     contentParagraphs: [
       'The PPP Union Secretariat maintains offices and accredited representation across multiple global jurisdictions.',
       'For partnership inquiries, sovereign membership, or certification of transaction facilitators, please contact our international headquarters or regional liaison offices.',
-      'Official Channel: Secure Secretariat Portal & Contact Schedules | Web: www.pppunion.org',
+      'Official Channels: inquiry@pppunion.org | members@pppunion.org | secretariat@pppunion.org | Web: www.pppunion.org',
       'The Secretariat guarantees full institutional confidentiality, responding to all sovereign delegations, institutional lenders, and accredited facilitator applications through encrypted official communications channels.',
       '【 EXECUTIVE SUBJECT SUMMARY: The Contact Secretariat page provides official, secure communication channels to the PPP Union international headquarters and regional desks. Handling sovereign delegation onboarding, membership reviews at members@pppunion.org, facilitator credentialing, and technical assistance inquiries, the Secretariat maintains ISO/IEC 27001 data protection and diplomatic confidentiality for all global partners. 】'
     ],

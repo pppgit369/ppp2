@@ -14,15 +14,15 @@ const PRESET_LOGOS = [
   {
     id: 'default',
     title: 'Official Master 17-SDGs Seal (Default)',
-    subtitle: 'High-res vector emblem with UN Laurel branches, 8 stars, coordinate grid, and 17-SDGs ribbon',
-    url: '/ppp-union-logo.svg',
-    type: 'vector',
+    subtitle: 'Authentic UN Laurel branches, 8 stars, coordinate grid, and 17-SDGs ribbon',
+    url: '/logo.png',
+    type: 'official',
   },
   {
-    id: 'un-blue',
-    title: 'Vibrant UN Blue Emblem',
-    subtitle: 'Classic institutional emblem in pure United Nations Blue (#0066CC)',
-    url: '/ppp-union-logo.svg',
+    id: 'official-vector',
+    title: 'Official Scalable Vector (SVG)',
+    subtitle: 'High-definition SVG with embedded master institutional graphics',
+    url: '/icon.svg',
     type: 'vector',
   },
 ];
@@ -47,7 +47,7 @@ export const MasterLogoModal: React.FC<MasterLogoModalProps> = ({
   };
 
   const [activeTab, setActiveTab] = useState<'upload' | 'url' | 'presets' | 'specs'>('upload');
-  const [previewUrl, setPreviewUrl] = useState<string>(customLogo || '/ppp-union-logo.svg');
+  const [previewUrl, setPreviewUrl] = useState<string>(customLogo || '/logo.png');
   const [urlInput, setUrlInput] = useState<string>('');
   const [bgDark, setBgDark] = useState<boolean>(false);
   const [copied, setCopied] = useState<boolean>(false);
@@ -59,7 +59,7 @@ export const MasterLogoModal: React.FC<MasterLogoModalProps> = ({
   // Sync preview whenever customLogo or modal opens
   useEffect(() => {
     if (isModalOpen) {
-      setPreviewUrl(customLogo || '/ppp-union-logo.svg');
+      setPreviewUrl(customLogo || '/logo.png');
       setUrlInput(customLogo && !customLogo.startsWith('data:') ? customLogo : '');
       setSavedFeedback(null);
     }
@@ -101,7 +101,7 @@ export const MasterLogoModal: React.FC<MasterLogoModalProps> = ({
 
   const handleApplyLogo = () => {
     // If the preview is the default SVG, clear customLogo
-    if (previewUrl === '/ppp-union-logo.svg' || previewUrl === '') {
+    if (previewUrl === '/icon.svg' || previewUrl === '') {
       resetLogo();
       setSavedFeedback('Reverted to Official Master 17-SDGs Seal across the entire app!');
     } else {
@@ -116,7 +116,7 @@ export const MasterLogoModal: React.FC<MasterLogoModalProps> = ({
 
   const handleResetToDefault = () => {
     resetLogo();
-    setPreviewUrl('/ppp-union-logo.svg');
+    setPreviewUrl('/icon.svg');
     setUrlInput('');
     setSavedFeedback('Reset to default official emblem. Click "Apply as App Logo" or it is already active.');
     setTimeout(() => {
@@ -125,7 +125,7 @@ export const MasterLogoModal: React.FC<MasterLogoModalProps> = ({
   };
 
   const handleCopySvg = () => {
-    fetch('/ppp-union-logo.svg')
+    fetch('/icon.svg')
       .then(res => res.text())
       .then(text => {
         navigator.clipboard.writeText(text);
@@ -140,14 +140,14 @@ export const MasterLogoModal: React.FC<MasterLogoModalProps> = ({
 
   const handleDownloadSvg = () => {
     const link = document.createElement('a');
-    link.href = previewUrl || '/ppp-union-logo.svg';
+    link.href = previewUrl || '/icon.svg';
     link.download = previewUrl.startsWith('data:image/png') ? 'ppp-union-logo.png' : 'PPP-Union-17-SDGs-Logo.svg';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
 
-  const isCustomActive = !!customLogo && customLogo !== '/ppp-union-logo.svg';
+  const isCustomActive = !!customLogo && customLogo !== '/icon.svg';
 
   return (
     <div 
@@ -218,7 +218,7 @@ export const MasterLogoModal: React.FC<MasterLogoModalProps> = ({
                 alt="PPP UNION App Logo Preview" 
                 className="w-44 h-44 sm:w-48 sm:h-48 object-contain"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = '/ppp-union-logo.svg';
+                  (e.target as HTMLImageElement).src = '/icon.svg';
                 }}
               />
             </div>

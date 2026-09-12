@@ -17,7 +17,7 @@ export const PortalCredentialsStrip: React.FC<PortalCredentialsStripProps> = ({
   className = '',
 }) => {
   const { customLogo } = useAdmin();
-  const logoSrc = customLogo || '/ppp-union-logo.svg';
+  const logoSrc = customLogo || '/logo.png';
 
   return (
     <div 

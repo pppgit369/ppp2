@@ -514,11 +514,11 @@ export const ContentPages: React.FC<ContentPagesProps> = ({
                 To safeguard the Secretariat administration against automated scrapers, phishing operations, and unsolicited spam campaigns, direct email addresses are strictly protected from public website scraping.
               </p>
               <p className="text-xs sm:text-sm text-slate-700 leading-relaxed text-justify">
-                All institutional inquiries, meeting requests, and schedule appointments must be submitted through the verified <strong className="text-slate-900">Secure Secretariat Contact & Scheduling Portal</strong> below. Each transmission is cryptographically screened against robots and connected directly to the Secretariat Administration.
+                All institutional inquiries, membership submissions, and documented complaints must be submitted through the verified <strong className="text-slate-900">Secure Secretariat Contact & Routing Portal</strong> below. Each transmission is cryptographically screened against robots and connected directly to the designated department (<span className="font-mono font-semibold text-[#0072bc]">inquiry@pppunion.org</span>, <span className="font-mono font-semibold text-emerald-700">members@pppunion.org</span>, or <span className="font-mono font-semibold text-red-700">secretariat@pppunion.org</span>).
               </p>
               <div className="pt-1 flex items-center gap-2 text-[11px] font-semibold text-emerald-700">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>Direct Administration Channel: Active & Protected</span>
+                <span>Departmental Direct Routing: Active & Connected</span>
               </div>
             </div>
           </div>
@@ -553,12 +553,31 @@ export const ContentPages: React.FC<ContentPagesProps> = ({
 
                 <div className="flex items-start gap-3">
                   <ShieldCheck className="w-4 h-4 text-[#0072bc] shrink-0 mt-1" />
-                  <div>
-                    <strong className="block text-slate-900 font-semibold">Secretariat Inquiries & Schedules</strong>
-                    <span className="text-slate-600 block text-xs mt-0.5">
-                      Direct Encrypted Channel (Routed directly to Secretariat Administration)
-                    </span>
-                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 mt-1">
+                  <div className="space-y-2 w-full">
+                    <strong className="block text-slate-900 font-semibold">Official Departmental Emails</strong>
+                    
+                    <div className="p-2 rounded-lg bg-white border border-slate-200 text-xs space-y-1.5">
+                      <div>
+                        <span className="text-slate-500 block text-[10px] uppercase font-bold">1. General Inquiries</span>
+                        <a href="mailto:inquiry@pppunion.org" className="font-mono font-bold text-[#0072bc] hover:underline">
+                          inquiry@pppunion.org
+                        </a>
+                      </div>
+                      <div className="pt-1 border-t border-slate-100">
+                        <span className="text-slate-500 block text-[10px] uppercase font-bold">2. Membership Affairs</span>
+                        <a href="mailto:members@pppunion.org" className="font-mono font-bold text-emerald-700 hover:underline">
+                          members@pppunion.org
+                        </a>
+                      </div>
+                      <div className="pt-1 border-t border-slate-100">
+                        <span className="text-slate-500 block text-[10px] uppercase font-bold">3. Complaints & Secretariat</span>
+                        <a href="mailto:secretariat@pppunion.org" className="font-mono font-bold text-red-700 hover:underline">
+                          secretariat@pppunion.org
+                        </a>
+                      </div>
+                    </div>
+
+                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                       <Lock className="w-3 h-3" /> Anti-Scam Protection Active
                     </span>
                   </div>
