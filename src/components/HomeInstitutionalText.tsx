@@ -130,7 +130,7 @@ export const HomeInstitutionalText: React.FC<HomeInstitutionalTextProps> = ({
     >
       <div className="max-w-7xl mx-auto">
         {/* Admin Quick Edit Button */}
-        {isEditMode && (
+        {isAdmin && isEditMode && (
           <div className="mb-6 flex justify-end">
             <button
               onClick={handleEditSection}
@@ -182,33 +182,35 @@ export const HomeInstitutionalText: React.FC<HomeInstitutionalTextProps> = ({
         <div className="bg-white rounded-2xl p-6 sm:p-8 lg:p-10 border border-[#0072bc]/20 shadow-xl shadow-blue-900/5 mb-14 relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#0072bc] via-sky-400 to-[#005a96]" />
           
-          {/* Quick Edit Bar for Home Legal Charter (Directly Visible for User to Change Text Anytime) */}
-          <div className="mb-6 p-2.5 sm:p-3 bg-gradient-to-r from-amber-50 to-sky-50 rounded-xl border border-amber-200 flex items-center justify-between flex-wrap gap-2">
-            <div className="flex items-center gap-2 text-xs font-bold text-slate-800">
-              <span className="w-5 h-5 rounded bg-amber-500 text-slate-950 flex items-center justify-center text-[10px] font-black">§</span>
-              <span>{sec.quickEditNotice}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={handleOpenEditCharter}
-                className="px-3 py-1.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs rounded-lg shadow-xs flex items-center gap-1.5 transition-colors cursor-pointer"
-                title="Directly modify or replace the home page text in inline editor"
-              >
-                <Edit3 className="w-3.5 h-3.5" />
-                <span>{sec.modifyDirectlyBtn}</span>
-              </button>
-              {onOpenWpManager && (
+          {/* Quick Edit Bar for Home Legal Charter (Strictly Admin Only - 100% Confidential from Visitors) */}
+          {isAdmin && (
+            <div className="mb-6 p-2.5 sm:p-3 bg-gradient-to-r from-amber-50 to-sky-50 rounded-xl border border-amber-200 flex items-center justify-between flex-wrap gap-2">
+              <div className="flex items-center gap-2 text-xs font-bold text-slate-800">
+                <span className="w-5 h-5 rounded bg-amber-500 text-slate-950 flex items-center justify-center text-[10px] font-black">§</span>
+                <span>{sec.quickEditNotice}</span>
+              </div>
+              <div className="flex items-center gap-2">
                 <button
-                  onClick={() => onOpenWpManager('home-charter', 'quick-posts')}
-                  className="px-3 py-1.5 bg-[#0073aa] hover:bg-[#005a87] text-white font-bold text-xs rounded-lg shadow-xs flex items-center gap-1.5 transition-colors cursor-pointer"
-                  title="Open in Direct PPP Union WP-Admin Editor for All Posts"
+                  onClick={handleOpenEditCharter}
+                  className="px-3 py-1.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs rounded-lg shadow-xs flex items-center gap-1.5 transition-colors cursor-pointer"
+                  title="Directly modify or replace the home page text in inline editor"
                 >
-                  <span className="w-3.5 h-3.5 rounded bg-white text-[#0073aa] flex items-center justify-center text-[8px] font-black">W</span>
-                  <span>{sec.wpAdminBtn}</span>
+                  <Edit3 className="w-3.5 h-3.5" />
+                  <span>{sec.modifyDirectlyBtn}</span>
                 </button>
-              )}
+                {onOpenWpManager && (
+                  <button
+                    onClick={() => onOpenWpManager('home-charter', 'quick-posts')}
+                    className="px-3 py-1.5 bg-[#0073aa] hover:bg-[#005a87] text-white font-bold text-xs rounded-lg shadow-xs flex items-center gap-1.5 transition-colors cursor-pointer"
+                    title="Open in Direct PPP Union WP-Admin Editor for All Posts"
+                  >
+                    <span className="w-3.5 h-3.5 rounded bg-white text-[#0073aa] flex items-center justify-center text-[8px] font-black">W</span>
+                    <span>{sec.wpAdminBtn}</span>
+                  </button>
+                )}
+              </div>
             </div>
-          </div>
+          )}
 
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-xl bg-[#e6f3fa] text-[#0072bc] flex items-center justify-center shrink-0 mt-1">
@@ -379,12 +381,12 @@ export const HomeInstitutionalText: React.FC<HomeInstitutionalTextProps> = ({
 
         {/* 4. RUNNING MEDIA POSTS SHOWCASE (12 Posts with Running / Slow Auto-Advance Transition) */}
         <RunningMediaPosts 
-          isEditMode={isEditMode} 
+          isEditMode={isAdmin && isEditMode} 
           onNavigate={onNavigate}
           posts={mediaPosts}
-          onUpdatePost={onUpdateMediaPost}
-          onEditPost={onEditMediaPost}
-          onOpenWpManager={onOpenWpManager}
+          onUpdatePost={isAdmin ? onUpdateMediaPost : undefined}
+          onEditPost={isAdmin ? onEditMediaPost : undefined}
+          onOpenWpManager={isAdmin ? onOpenWpManager : undefined}
         />
 
         {/* 5. Clear Distinction Between “Grant” and “Finance” in PPP Terminology */}
@@ -702,8 +704,8 @@ export const HomeInstitutionalText: React.FC<HomeInstitutionalTextProps> = ({
           </div>
         </div>
 
-        {/* Modal Dialog for Direct Editing Home Legal Charter Text */}
-        {isEditingCharter && (
+        {/* Modal Dialog for Direct Editing Home Legal Charter Text (Strictly Admin Only) */}
+        {isEditingCharter && isAdmin && (
           <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
             <div 
               className="bg-white rounded-2xl shadow-2xl border border-slate-300 w-full max-w-4xl max-h-[90vh] flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-150 text-left"

@@ -317,7 +317,7 @@ export const ContentPages: React.FC<ContentPagesProps> = ({
 
         {/* 1. Header Section */}
         <div className="border-b border-slate-200 pb-6 mb-6 sm:mb-8 relative">
-          {isEditMode && (
+          {isAdmin && isEditMode && (
             <button
               onClick={() => onEditBox({
                 id: 'contact-header-box',
@@ -707,9 +707,9 @@ export const ContentPages: React.FC<ContentPagesProps> = ({
             />
           </div>
 
-          {/* Quick WordPress Edit Page Action */}
+          {/* Quick WordPress Edit Page Action (Strictly Admin Only) */}
           <div className="flex items-center gap-2">
-            {onOpenWpEditor && (
+            {isAdmin && onOpenWpEditor && (
               <button
                 onClick={() => onOpenWpEditor(chapterData.id)}
                 className="px-3 py-1.5 bg-[#0073aa] hover:bg-[#005a87] text-white text-xs font-bold rounded-lg flex items-center gap-1.5 shadow-xs transition-colors cursor-pointer"
@@ -720,7 +720,7 @@ export const ContentPages: React.FC<ContentPagesProps> = ({
               </button>
             )}
 
-            {isEditMode && (
+            {isAdmin && isEditMode && (
               <button
                 onClick={() => onEditBox({
                   id: `chapter-header-${chapterData.id}`,

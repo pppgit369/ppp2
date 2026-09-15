@@ -322,8 +322,8 @@ export const RunningMediaPosts: React.FC<RunningMediaPostsProps> = ({
 
         {/* Action Controls */}
         <div className="flex items-center gap-2 shrink-0 self-end md:self-auto flex-wrap">
-          {/* Direct WP-Admin Posts Editor Button */}
-          {onOpenWpManager && (
+          {/* Direct WP-Admin Posts Editor Button (Strictly Admin Only) */}
+          {isAdmin && onOpenWpManager && (
             <button
               onClick={() => onOpenWpManager(null, 'quick-posts')}
               className="px-3 py-1.5 rounded-lg bg-[#0073aa] hover:bg-[#005a87] text-white text-xs font-bold flex items-center gap-1.5 shadow-xs transition-colors cursor-pointer"
@@ -427,12 +427,12 @@ export const RunningMediaPosts: React.FC<RunningMediaPostsProps> = ({
                     <span className="text-[11px] font-semibold text-white/80 bg-black/40 px-2 py-0.5 rounded backdrop-blur-xs">
                       {post.date}
                     </span>
-                    {onOpenWpManager && (
+                    {isAdmin && (onOpenWpManager || onEditPost) && (
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           if (onEditPost) onEditPost(post);
-                          else onOpenWpManager(post.id, 'quick-posts');
+                          else if (onOpenWpManager) onOpenWpManager(post.id, 'quick-posts');
                         }}
                         className="p-1 rounded bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold shadow-md transition-transform hover:scale-110 cursor-pointer"
                         title={`Direct WP-Admin Quick Edit: ${post.title}`}
@@ -503,12 +503,12 @@ export const RunningMediaPosts: React.FC<RunningMediaPostsProps> = ({
                   <span className="text-[11px] font-semibold text-white/80 bg-black/40 px-2 py-0.5 rounded backdrop-blur-xs">
                     {post.date}
                   </span>
-                  {onOpenWpManager && (
+                  {isAdmin && (onOpenWpManager || onEditPost) && (
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
                         if (onEditPost) onEditPost(post);
-                        else onOpenWpManager(post.id, 'quick-posts');
+                        else if (onOpenWpManager) onOpenWpManager(post.id, 'quick-posts');
                       }}
                       className="p-1 rounded bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold shadow-md transition-transform hover:scale-110 cursor-pointer"
                       title={`Direct WP-Admin Quick Edit: ${post.title}`}
@@ -624,7 +624,7 @@ export const RunningMediaPosts: React.FC<RunningMediaPostsProps> = ({
                       </button>
                     ) : null}
 
-                    {onOpenWpManager && (
+                    {isAdmin && onOpenWpManager && (
                       <button
                         onClick={() => {
                           const pId = modalPost.id;
